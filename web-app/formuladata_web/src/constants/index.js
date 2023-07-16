@@ -18,22 +18,27 @@
 export const navLinks = [
   {
     id: "home",
+    route: "/Home",
     title: "Home",
   },
   {
     id: "fantasy",
+    route: "/FantasyBuilder",
     title: "Fantasy Builder",
   },
   {
     id: "api",
+    route: "/Api",
     title: "API",
   },
   {
     id: "feedback",
+    route: "/Feedback",
     title: "Feedback",
   },
   {
     id: "bug",
+    route: "/BugReports",
     title: "Bug Reports",
   },
 ];

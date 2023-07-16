@@ -1,8 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-lobster {
+  font-family: "Lobster", cursive;
+}
+
+.text-netflix-red {
+  color: #c6040d;
+}
 
 :root {
   --black-gradient: linear-gradient(
@@ -34,6 +43,38 @@
   text-fill-color: transparent;
 }
 
+.text-red-gradient {
+  background: radial-gradient(
+    64.18% 64.18% at 71.16% 35.69%,
+    #ffebeb 0.89%,
+    #ffc8c8 17.23%,
+    #ffa4a4 42.04%,
+    #ff8080 55.12%,
+    #ff5959 71.54%,
+    #a70000 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-red-gradient-2 {
+  background: radial-gradient(
+    64.18% 64.18% at 71.16% 35.69%,
+    #ff9191 0.89%,
+    #ff4f4f 17.23%,
+    #fe4a4a 42.04%,
+    #fa3f3f 55.12%,
+    #fb3030 71.54%,
+    #c6040d 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
 .bg-blue-gradient {
   background: linear-gradient(
     157.81deg,
@@ -43,6 +84,64 @@
     #7de7eb 29.82%,
     #5ce1e6 51.94%,
     #33bbcf 90.29%
+  );
+}
+
+/* .bg-red-gradient {
+  background: linear-gradient(
+    157.81deg,
+    #ffd6d6 -43.27%,
+    #ffa4a4 -21.24%,
+    #ff7272 12.19%,
+    #ff4040 29.82%,
+    #ff0d0d 51.94%,
+    #a70000 90.29%
+  );
+} */
+
+.bg-red-gradient-1 {
+  background: linear-gradient(
+    /* 257.81deg, */ 270deg,
+    #ffd3d3 -43.27%,
+    #ff9d9d -21.24%,
+    #fc7171 12.19%,
+    #ff5a5a 29.82%,
+    #e42222 51.94%,
+    #a70000 90.29%
+  );
+}
+
+/* .bg-red-gradient:hover {
+  background: linear-gradient(
+    90deg,
+    #ffebeb -43.27%,
+    #ffc8c8 -21.24%,
+    #ffa4a4 12.19%,
+    #ff8080 29.82%,
+    #ff5959 51.94%,
+    #a70000 90.29%
+  );
+} */
+
+.bg-red-gradient {
+  background: linear-gradient(
+    270deg,
+    #ffc4c4 -43.27%,
+    #ff9a9a -21.24%,
+    /* #ffa4a4 12.19%,
+    #ff8080 29.82%, */ #ff5959 51.94%,
+    #ff1111 90.29%
+  );
+}
+
+.bg-red-gradient:hover {
+  background: linear-gradient(
+    270deg,
+    #ffebeb -43.27%,
+    #ffc8c8 -21.24%,
+    /* #ffa4a4 12.19%,
+    #ff8080 29.82%, */ #ffc2c2 51.94%,
+    #fc9393 90.29%
   );
 }
 

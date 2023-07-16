@@ -4,23 +4,35 @@ import { navLinks } from "../constants";
 import logo from "../assets/logo.png";
 import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
-
-
+import car from "../assets/car.svg";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      <img src={react} alt="formuladata" className="w-[124px] h-[32px]" />
-      <ul className="list-none sm:flex hidden justify-end items-center flex-1">
+      <img src={car} alt="formuladata" className="w-[50px] h-[50px]" />
+      <h3 className="font-lobster font-normal text-red-gradient-2 text-[40px] ml-0">
+        FormulaData
+      </h3>
+      <ul className="list-none sm:flex hidden justify-end items-center flex-1 ">
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
             className={`font-poppins font-normal cursor-pointer text-[16px] $
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"} text-white`}
           >
-            <a href={`#${nav.id}`}>{nav.title}</a>
+            <a
+              onClick={() => {
+                navigate(`${nav.route}`);
+              }}
+              className="hover:text-customRed"
+              // href={`#${nav.id}`}
+            >
+              {nav.title}
+            </a>
           </li>
         ))}
       </ul>
