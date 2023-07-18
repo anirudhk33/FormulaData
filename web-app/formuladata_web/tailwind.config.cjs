@@ -11,11 +11,17 @@ module.exports = {
         dimWhite: "rgba(255, 255, 255, 0.7)",
         dimBlue: "rgba(9, 151, 124, 0.1)",
         customRed: "#fe4a4a",
-        // #ff4f4f
-        // #fe4a4a
+        redbullYellow: "#fdd900",
+        redbullRed: "#e30118",
+        redbullOrange: "#fd8f00",
+        darkGrey: "#181716",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+      },
+      gap: {
+        100: "50rem",
+        50: "25rem",
       },
     },
     screens: {

@@ -1,16 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Shrikhand&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .font-lobster {
-  font-family: "Lobster", cursive;
+  font-family: "Shrikhand", cursive;
 }
 
-.text-netflix-red {
-  color: #c6040d;
+.text-redbull-red {
+  color: #e30118;
+}
+
+.text-redbull-yellow {
+  color: #fdd900;
+}
+
+.gradient-text-redbull {
+  background: linear-gradient(to right, #e30118 25%, #fdd900);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.bg-redbull-yellow {
+  background-color: #fdd900;
+}
+
+.bg-redbull-yellow:hover {
+  background-color: #fdd7009d;
 }
 
 :root {
@@ -175,6 +196,10 @@
   background: linear-gradient(125.17deg, #272727 0%, #11101d 100%);
 }
 
+.bg-grey {
+  background: #272727;
+}
+
 .box-shadow {
   box-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
 }
@@ -224,12 +249,16 @@
 }
 
 .blue__gradient {
-  background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #214d76 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(188, 165, 255, 0) 0%,
+    #cb0700af 100%
+  );
   filter: blur(123px);
 }
 
 .pink__gradient {
-  background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
+  background: linear-gradient(90deg, #f7ff89 0%, #f6ff00 100%);
   filter: blur(900px);
 }
 

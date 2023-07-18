@@ -13,8 +13,16 @@ export const Navbar = () => {
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      <img src={car} alt="formuladata" className="w-[50px] h-[50px]" />
-      <h3 className="font-lobster font-normal text-red-gradient-2 text-[40px] ml-0">
+      <img
+        src={logo}
+        alt="formuladata"
+        className="w-[50px] h-[50px] hover:cursor-pointer"
+        onClick={() => navigate("/Home")}
+      />
+      <h3
+        onClick={() => navigate("/Home")}
+        className="font-poppins font-medium gradient-text-redbull text-[32px] pl-3 hover:cursor-pointer"
+      >
         FormulaData
       </h3>
       <ul className="list-none sm:flex hidden justify-end items-center flex-1 ">
@@ -28,7 +36,7 @@ export const Navbar = () => {
               onClick={() => {
                 navigate(`${nav.route}`);
               }}
-              className="hover:text-customRed"
+              className="hover:text-redbullYellow"
               // href={`#${nav.id}`}
             >
               {nav.title}
