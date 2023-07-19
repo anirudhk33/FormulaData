@@ -4,15 +4,15 @@ import { FantasyBuilder } from "./components/FantasyBuilder";
 import { Navbar } from "./components/Navbar";
 import { Api } from "./components/Api";
 import { Feedback } from "./components/Feedback";
-import { BugReports } from "./components/BugReports";
+import BugReports from "./components/BugReports";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <Router>
       <div className="bg-primary w-full min-h-screen overflow-hidden">
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`}>
+        <div className={`${styles.paddingX} ${styles.flexCenter} `}>
+          <div className={`${styles.boxWidth} `}>
             <Navbar />
           </div>
         </div>

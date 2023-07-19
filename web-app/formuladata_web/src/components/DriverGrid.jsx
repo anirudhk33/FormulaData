@@ -19,7 +19,7 @@ export const DriverGrid = ({ update, selected, style }) => {
     "Alexander Albon",
     "Logan Sargeant",
     "Yuki Tsunoda",
-    "Nyck De Vries",
+    "Daniel Ricciardo",
     "Nico Hulkenberg",
     "Kevin Magnussen",
   ];
