@@ -377,13 +377,13 @@ const useWildCard = (optimalTeam) => {
 const DRSBoost = (optimalTeam, DriverPoints) => {
   let bestDriver = "";
   let maxPoints = -100;
-  for (let driver in optimalTeam.drivers) {
-    if (DriverPoints[driver] > maxPoints) {
-      bestDriver = driver;
-      maxPoints = DriverPoints[driver];
+  for (let i = 0; i < optimalTeam.drivers.length; i++) {
+    if (DriverPoints[optimalTeam.drivers[i]] > maxPoints) {
+      bestDriver = optimalTeam.drivers[i];
+      maxPoints = DriverPoints[optimalTeam.drivers[i]];
     }
-    return bestDriver;
   }
+  return bestDriver;
 };
 
 const extraDRSBoost = (optimalTeam, DriverPoints, sprint) => {
@@ -396,5 +396,18 @@ const extraDRSBoost = (optimalTeam, DriverPoints, sprint) => {
       maxPoints = DriverPoints[driver];
     }
     return bestDriver;
+  }
+};
+
+const noNegative = (optimalTeam, risky) => {
+  if (risky) {
+    let constructorChoices = [];
+    for (let dr in optimalTeam.drivers) {
+      if (!constructorChoices.includes(driverToConstructor[dr])) {
+        constructorChoices.push(driverToConstructor[dr]);
+      }
+    }
+    if (constructorChoices.length <= 4) return true;
+    return false;
   }
 };

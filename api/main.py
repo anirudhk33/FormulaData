@@ -1,25 +1,34 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import pandas as pd
-import gdown
+import scrape
+
 
 app = Flask(__name__)
+CORS(app)
 
 # Google Drive file ID
 file_id = '1dVKzWsdiImuWDDQ9CnRFSHK0Lcr_xK6P'
-# Download the CSV file from Google Drive
+# Google Drive download URL
 url = f'https://drive.google.com/uc?id={file_id}'
-output = 'data.csv'
-gdown.download(url, output, quiet=False)
-# Read the CSV file into a DataFrame
-df = pd.read_csv(output)
+
+# Read the CSV file directly from the URL into a DataFrame
+df = pd.read_csv(url)
+
+
 # df = pd.read_csv('/Users/anirudhkrishna/GitHub/FormulaData/csv-data/cleaned_race_data.csv')
 string_columns = df.select_dtypes(include='object').columns.tolist()
 int_columns = df.select_dtypes(include='int64').columns.tolist()
 float_columns = df.select_dtypes(include='float64').columns.tolist()
-drivers_and_constructors = df[['driver_name', 'constructor_name']].drop_duplicates(subset=['driver_name', 'constructor_name'])
-circuit_details = df[['location', 'latitude', 'longitude', 'circuit_length', 'circuit_full_name']].drop_duplicates(subset=['location'])
-grand_prix_details = df[['season', 'round', 'location', 'circuit_full_name', 'latitude', 'longitude', 'circuit_length', 'date', 'weather']].drop_duplicates(subset=['season', 'round'])
-key_data = df[['season', 'round', 'location', 'weather', 'driver_name', 'constructor_name', 'race_finishing_position', 'grid_position', 'points']]
+drivers_and_constructors = df[['driver_name', 'constructor_name']].drop_duplicates(
+    subset=['driver_name', 'constructor_name'])
+circuit_details = df[['location', 'latitude', 'longitude', 'circuit_length',
+                      'circuit_full_name']].drop_duplicates(subset=['location'])
+grand_prix_details = df[['season', 'round', 'location', 'circuit_full_name', 'latitude',
+                         'longitude', 'circuit_length', 'date', 'weather']].drop_duplicates(subset=['season', 'round'])
+key_data = df[['season', 'round', 'location', 'weather', 'driver_name',
+               'constructor_name', 'race_finishing_position', 'grid_position', 'points']]
+
 
 @app.route('/api/f1', methods=['GET'])
 def get_full_filtered_data():
@@ -28,7 +37,7 @@ def get_full_filtered_data():
     for key, val in arguments.items():
         if key not in df.columns:
             return jsonify({"Error": "Incorrect Request - Please Check Arguments"})
-            
+
     # Get the query parameters
     for column in df.columns:
         value = request.args.get(column)
@@ -41,9 +50,11 @@ def get_full_filtered_data():
         if column in string_columns:
             filtered_df = filtered_df[filtered_df[column].astype(str) == value]
         elif column in float_columns:
-            filtered_df = filtered_df[filtered_df[column].astype(float) == float(value)]
+            filtered_df = filtered_df[filtered_df[column].astype(
+                float) == float(value)]
         elif column in int_columns:
-            filtered_df = filtered_df[filtered_df[column].astype(int) == int(value)]
+            filtered_df = filtered_df[filtered_df[column].astype(
+                int) == int(value)]
         else:
             filtered_df = filtered_df[filtered_df[column] == value]
 
@@ -58,7 +69,7 @@ def get_key_filtered_data():
     for key, val in arguments.items():
         if key not in df.columns:
             return jsonify({"Error": "Incorrect Request - Please Check Arguments"})
-            
+
     # Get the query parameters
     for column in df.columns:
         value = request.args.get(column)
@@ -71,9 +82,11 @@ def get_key_filtered_data():
         if column in string_columns:
             filtered_df = filtered_df[filtered_df[column].astype(str) == value]
         elif column in float_columns:
-            filtered_df = filtered_df[filtered_df[column].astype(float) == float(value)]
+            filtered_df = filtered_df[filtered_df[column].astype(
+                float) == float(value)]
         elif column in int_columns:
-            filtered_df = filtered_df[filtered_df[column].astype(int) == int(value)]
+            filtered_df = filtered_df[filtered_df[column].astype(
+                int) == int(value)]
         else:
             filtered_df = filtered_df[filtered_df[column] == value]
 
@@ -88,7 +101,7 @@ def get_drivers_and_constructors_data():
     for key, val in arguments.items():
         if key not in df.columns:
             return jsonify({"Error": "Incorrect Request - Please Check Arguments"})
-            
+
     # Get the query parameters
     for column in df.columns:
         value = request.args.get(column)
@@ -101,16 +114,16 @@ def get_drivers_and_constructors_data():
         if column in string_columns:
             filtered_df = filtered_df[filtered_df[column].astype(str) == value]
         elif column in float_columns:
-            filtered_df = filtered_df[filtered_df[column].astype(float) == float(value)]
+            filtered_df = filtered_df[filtered_df[column].astype(
+                float) == float(value)]
         elif column in int_columns:
-            filtered_df = filtered_df[filtered_df[column].astype(int) == int(value)]
+            filtered_df = filtered_df[filtered_df[column].astype(
+                int) == int(value)]
         else:
             filtered_df = filtered_df[filtered_df[column] == value]
 
     # Return the filtered data as JSON
     return jsonify(filtered_df.to_dict(orient='records'))
-
-
 
 
 @app.route('/api/f1/grand_prix_data', methods=['GET'])
@@ -120,7 +133,7 @@ def get_grand_prix_data():
     for key, val in arguments.items():
         if key not in df.columns:
             return jsonify({"Error": "Incorrect Request - Please Check Arguments"})
-            
+
     # Get the query parameters
     for column in df.columns:
         value = request.args.get(column)
@@ -133,17 +146,16 @@ def get_grand_prix_data():
         if column in string_columns:
             filtered_df = filtered_df[filtered_df[column].astype(str) == value]
         elif column in float_columns:
-            filtered_df = filtered_df[filtered_df[column].astype(float) == float(value)]
+            filtered_df = filtered_df[filtered_df[column].astype(
+                float) == float(value)]
         elif column in int_columns:
-            filtered_df = filtered_df[filtered_df[column].astype(int) == int(value)]
+            filtered_df = filtered_df[filtered_df[column].astype(
+                int) == int(value)]
         else:
             filtered_df = filtered_df[filtered_df[column] == value]
 
     # Return the filtered data as JSON
     return jsonify(filtered_df.to_dict(orient='records'))
-
-
-
 
 
 @app.route('/api/f1/circuit_data', methods=['GET'])
@@ -153,7 +165,7 @@ def get_circuit_data():
     for key, val in arguments.items():
         if key not in df.columns:
             return jsonify({"Error": "Incorrect Request - Please Check Arguments"})
-            
+
     # Get the query parameters
     for column in df.columns:
         value = request.args.get(column)
@@ -166,9 +178,11 @@ def get_circuit_data():
         if column in string_columns:
             filtered_df = filtered_df[filtered_df[column].astype(str) == value]
         elif column in float_columns:
-            filtered_df = filtered_df[filtered_df[column].astype(float) == float(value)]
+            filtered_df = filtered_df[filtered_df[column].astype(
+                float) == float(value)]
         elif column in int_columns:
-            filtered_df = filtered_df[filtered_df[column].astype(int) == int(value)]
+            filtered_df = filtered_df[filtered_df[column].astype(
+                int) == int(value)]
         else:
             filtered_df = filtered_df[filtered_df[column] == value]
 
@@ -176,22 +190,32 @@ def get_circuit_data():
     return jsonify(filtered_df.to_dict(orient='records'))
 
 
-# @app.route('/api/f1/drivers_and_constructors', methods=['GET'])
-# def get_drivers_and_constructors():
-#     json_data_drivers_and_constructors = drivers_and_constructors.to_dict(orient='records')
-#     return jsonify(json_data_drivers_and_constructors)
+@app.route('/api/f1/fp_scraping', methods=['GET'])
+def get_fp_data():
 
+    arguments = request.args
+    for key, val in arguments.items():
+        if key not in ["location"]:
+            return jsonify({"Error": "Incorrect Request - Please Check Arguments"})
 
-# @app.route('/api/f1/circuit_details', methods=['GET'])
-# def get_circuit_details():
-#     json_data_circuit = circuit_details.to_dict(orient='records')
-#     return jsonify(json_data_circuit)
+    value = request.args.get("location")
+    if value is not None:
+        location = value
 
+    
+    FP1_results = scrape.FP_scrape_results(2023,2024,1, location)
+    FP2_results = scrape.FP_scrape_results(2023,2024,2, location)
+    FP3_results = scrape.FP_scrape_results(2023,2024,3, location)
 
-# @app.route('/api/f1/grand_prix_details', methods=['GET'])
-# def get_grand_prix_details():
-#     json_data_gps = grand_prix_details.to_dict(orient='records')
-#     return jsonify(json_data_gps)
+    FP1_results["Driver"] = FP1_results["Driver"].apply(scrape.parse_driver_name)
+    FP2_results["Driver"] = FP2_results["Driver"].apply(scrape.parse_driver_name)
+    FP3_results["Driver"] = FP3_results["Driver"].apply(scrape.parse_driver_name)
+
+    free_practice_results = FP1_results.merge(FP2_results, on=['Driver', 'season'], how='outer').merge(FP3_results, on=['Driver', 'season'], how='outer')
+
+    free_practice_results.rename(columns={'Driver':'driver_name'}, inplace=True)
+    # Return the filtered data as JSON
+    return jsonify(free_practice_results.to_dict(orient='records'))
 
 
 if __name__ == '__main__':

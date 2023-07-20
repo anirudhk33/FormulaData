@@ -1,11 +1,26 @@
-import React from "react";
 import * as functions from "../algorithms";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 export const Results = () => {
+  const [data, setData] = useState("");
+
+  useEffect(() => {
+    // Make the API request to your Flask backend
+    axios
+      .get("http://127.0.0.1:5000/api/f1/fp_scraping?location=spain")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+  console.log(data);
+
   // // // // ALGORITHMIC IMPLEMENTATION
   // Receive: Predicted Race Order in String Array Form
   //
-
   const driverChoices = [
     "Max Verstappen",
     "George Russell",
