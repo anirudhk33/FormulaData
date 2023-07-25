@@ -120,18 +120,30 @@ export const FantasyBuilder = () => {
             </button>
           </div>
 
-          {/* Modal */}
           {showModal && (
             <div
               className="fixed inset-0 flex items-center justify-center z-50"
-              onClick={() => setShowModal(false)}
+              onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                  setShowModal(false);
+                }
+              }}
             >
               <div className="bg-black bg-opacity-50 fixed inset-0"></div>
-              <div className="bg-gray-800 p-8 max-w-md w-full rounded-lg shadow-lg z-10">
+              <div className="relative bg-gray-800 p-8 max-w-md w-full rounded-lg shadow-lg z-10">
+                {/* Close button (X) */}
+                <button
+                  className="absolute top-4 right-6 text-redbullYellow text-[24px] font-normal font-lunas focus:outline-none"
+                  onClick={() => setShowModal(false)}
+                >
+                  x
+                </button>
                 <h3 className="text-redbullYellow font-semibold text-xl mb-4">
                   Welcome to F1 Fantasy!
                 </h3>
                 <p className="text-gray-300">
+                  {/* Your modal content */}
+                  {/* Use the anchor tag for the link */}
                   In this game, you need to select a team of drivers and
                   constructors while staying within your budget. Each driver and
                   constructor is given points based on their real-life
@@ -143,7 +155,7 @@ export const FantasyBuilder = () => {
                     href="https://fantasy.formula1.com/en/game-rules"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-bold hover:underline hover:cursor-pointer"
+                    className="font-bold text-white hover:underline hover:cursor-pointer"
                   >
                     here
                   </a>{" "}
@@ -151,14 +163,18 @@ export const FantasyBuilder = () => {
                 </p>
                 <br />
                 <p className="text-gray-300">
-                  If you have never played before, get started with a budget of
-                  $100 mill. Click "All of the above" when it comes to Chip
-                  Availability. Choose "Balanced" as your optimization strategy.
-                  Do not choose any Drivers or Constructors in your first game.
+                  <span className="font-bold text-white">
+                    If you've never played before:{" "}
+                  </span>
+                  Get started with a budget of $100 mill. Click "All of the
+                  above" when it comes to Chip Availability. Choose "Balanced"
+                  as your optimization strategy. Do not choose any Drivers or
+                  Constructors in your first game.
                 </p>
               </div>
             </div>
           )}
+
           <div className="flex flex-col  items-center">
             {/* <h2 className="text-gray-200 font-poppins font-semibold text-[32px] leading-9 mb-[80px]">
             Fantasy Builder: Formula One 2023

@@ -23,7 +23,7 @@ const LoadingComponent = () => {
   }, []);
   return (
     <div className="flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center mt-[100px]">
+      <div className="flex flex-col items-center justify-center mt-[110px]">
         <FidgetSpinner
           visible={true}
           height="80"

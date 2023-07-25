@@ -460,7 +460,7 @@ const modifyConstructorPoints = (
 const sprintBoostDrivers = (sprint, DriverPoints) => {
   if (sprint) {
     for (let driver in DriverPoints) {
-      DriverPoints[driver] = parseInt(DriverPoints[driver] * 1.4);
+      DriverPoints[driver] = parseInt(DriverPoints[driver] * 1.3);
     }
   }
   return DriverPoints;
@@ -469,7 +469,7 @@ const sprintBoostDrivers = (sprint, DriverPoints) => {
 const sprintBoostConstructors = (sprint, ConstructorPoints) => {
   if (false) {
     for (let constructor in ConstructorPoints) {
-      ConstructorPoints[constructor] = ConstructorPoints[constructor] * 1.4;
+      ConstructorPoints[constructor] = ConstructorPoints[constructor] * 1.3;
     }
   }
   return ConstructorPoints;
@@ -989,9 +989,15 @@ export const Results = ({
     <div className="flex items-center justify-center mt-[50px] ">
       <div className="  flex flex-row items-center mb-20 px-14 bg-discount-gradient overflow-scroll rounded-[30px] w-4/5 pb-12">
         <div className="w-full h-full max-w-full max-h-full font-poppins font-normal text-white text-[16px] leading-[30px] ml-2">
-          <div className="flex flex-col items-center justify-center mt-8">
-            <h2 className=" text-[25px] font-bold leading-[50px] mb-10">
+          <div className="flex flex-col items-center justify-center mt-8 relative">
+            <h2 className=" text-[25px] font-bold leading-[50px] mb-10 ">
               Optimal Fantasy Team
+              <button
+                className="text-white font-semibold text-[14px] absolute top-0 right-0 hover:underline"
+                onClick={handleGoBack}
+              >
+                Go Back
+              </button>
             </h2>
             <h3 className=" text-[20px] font-medium leading-[50px] mb-5">
               Drivers
