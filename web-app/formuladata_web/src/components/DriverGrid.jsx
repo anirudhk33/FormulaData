@@ -41,7 +41,7 @@ export const DriverGrid = ({ update, selected, style }) => {
             <div
               key={index}
               className={`bg-darkGrey flex flex-col items-center justify-center h-full rounded-lg shadow-xl ${
-                selected.includes(name) ? "border-8 border-redbullRed" : ""
+                selected.includes(name) ? "border-[5px] border-redbullRed" : ""
               }`}
               onClick={() => toggleDriverSelection(name)}
             >
@@ -49,10 +49,10 @@ export const DriverGrid = ({ update, selected, style }) => {
               <img
                 src={`/src/DriverImages/${name}.avif`}
                 alt={`${name}`}
-                className="max-w-full max-h-full object-contain mb-1"
+                className="max-w-full max-h-full object-contain mb-1 hover:cursor-pointer"
               />
               {/* Add label */}
-              <p className="text-xs text-poppins text-white">{`${name}`}</p>
+              <p className="text-[12px] text-poppins text-white">{`${name}`}</p>
             </div>
           ))}
         </div>

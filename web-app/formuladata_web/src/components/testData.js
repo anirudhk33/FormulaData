@@ -1,4 +1,5 @@
 // Real Data - Testing of algorithms
+//
 import * as functions from "../algorithms";
 
 const avgFinishingPos = {
@@ -18,7 +19,7 @@ const avgFinishingPos = {
   "Zhou Guanyu": 13.9,
   "Valtteri Bottas": 13.5,
   "Nico Hulkenberg": 14.6,
-  "Nyck De Vries": 15.9,
+  "Daniel Ricciardo": 15.9,
   "Kevin Magnussen": 15.5,
   "Alexander Albon": 13.2,
   "Logan Sargeant": 16.2,
@@ -41,7 +42,7 @@ const avgFP1Pos = {
   "Zhou Guanyu": 14.2,
   "Valtteri Bottas": 12.9,
   "Nico Hulkenberg": 14.5,
-  "Nyck De Vries": 12.8,
+  "Daniel Ricciardo": 12.8,
   "Kevin Magnussen": 12.8,
   "Alexander Albon": 12.3,
   "Logan Sargeant": 17.3,
@@ -64,7 +65,7 @@ const avgFP2Pos = {
   "Lance Stroll": 9.8,
   "Zhou Guanyu": 13.7,
   "Yuki Tsunoda": 15.7,
-  "Nyck De Vries": 17.4,
+  "Daniel Ricciardo": 17.4,
   "Pierre Gasly": 10.2,
   "Kevin Magnussen": 14.4,
   "Esteban Ocon": 9.8,
@@ -87,13 +88,13 @@ const avgFP3Pos = {
   "Lance Stroll": 8.3,
   "Zhou Guanyu": 13.4,
   "Yuki Tsunoda": 13.8,
-  "Nyck De Vries": 16.0,
+  "Daniel Ricciardo": 16.0,
   "Pierre Gasly": 10.2,
   "Kevin Magnussen": 13.5,
   "Esteban Ocon": 12.9,
 };
 
-const raceOrder = [
+const raceOrderBackup = [
   "Max Verstappen",
   "Lando Norris",
   "Lewis Hamilton",
@@ -110,13 +111,13 @@ const raceOrder = [
   "Lance Stroll",
   "Zhou Guanyu",
   "Yuki Tsunoda",
-  "Nyck De Vries",
+  "Daniel Ricciardo",
   "Pierre Gasly",
   "Kevin Magnussen",
   "Esteban Ocon",
 ];
 
-const gridOrder = [
+const gridOrderBackup = [
   "Max Verstappen",
   "Lando Norris",
   "Oscar Piastri",
@@ -135,11 +136,11 @@ const gridOrder = [
   "Sergio Perez",
   "Yuki Tsunoda",
   "Zhou Guanyu",
-  "Nyck De Vries",
+  "Daniel Ricciardo",
   "Kevin Magnussen",
 ];
 
-const flOrder = [
+const flOrderBackup = [
   "Max Verstappen",
   "Lando Norris",
   "Lewis Hamilton",
@@ -157,7 +158,7 @@ const flOrder = [
   "Nico Hulkenberg",
   "Valtteri Bottas",
   "Yuki Tsunoda",
-  "Nyck De Vries",
+  "Daniel Ricciardo",
   "Kevin Magnussen",
   "Esteban Ocon",
 ];
@@ -192,7 +193,7 @@ const driverConstructorMap = {
   "Nico Hulkenberg": "Haas F1 Team",
   "Valtteri Bottas": "Alfa Romeo",
   "Yuki Tsunoda": "AlphaTauri",
-  "Nyck De Vries": "AlphaTauri",
+  "Daniel Ricciardo": "AlphaTauri",
   "Kevin Magnussen": "Haas F1 Team",
   "Esteban Ocon": "Alpine",
 };
@@ -207,7 +208,7 @@ const constructorDriverMap = {
   Alpine: ["Pierre Gasly", "Esteban Ocon"],
   "Alfa Romeo": ["Zhou Guanyu", "Valtteri Bottas"],
   "Haas F1 Team": ["Nico Hulkenberg", "Kevin Magnussen"],
-  AlphaTauri: ["Yuki Tsunoda", "Nyck De Vries"],
+  AlphaTauri: ["Yuki Tsunoda", "Daniel Ricciardo"],
 };
 
 const driverPrices = {
@@ -230,7 +231,7 @@ const driverPrices = {
   "Alexander Albon": 6.9,
   "Nico Hulkenberg": 3.8,
   "Logan Sargeant": 4.5,
-  "Nyck De Vries": 4.5,
+  "Daniel Ricciardo": 4.5,
 };
 
 const constructorPrices = {

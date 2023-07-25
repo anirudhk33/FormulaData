@@ -4,16 +4,16 @@ export const Api = () => {
   return (
     <div className="flex items-center justify-center mt-[120px] mb-40">
       <div className="flex flex-row items-center py-[6px] px-14 bg-grey overflow-scroll rounded-[30px] mb-3 w-4/5 pb-12">
-        <p className="w-full h-full max-w-full max-h-full font-poppins font-normal text-white text-[16px] leading-[30px] ml-2">
+        <p className="w-full h-full max-w-full max-h-full font-poppins font-normal text-white text-[15px] leading-[30px] ml-2">
           <div className="flex items-center justify-center mt-8 ">
-            <h2 className=" text-[36px] font-bold mt-10 leading-[50px]">
+            <h2 className=" text-[32px] font-bold mt-10 leading-[50px]">
               FormulaData API Documentation
             </h2>
           </div>
           <div className="container mx-auto px-4 mt-20">
             <div className="">
-              <h2 className="text-2xl font-bold mb-6">Table of Contents</h2>
-              <ul className="space-y-3 text-lg">
+              <h2 className="text-[24px] font-bold mb-6">Table of Contents</h2>
+              <ul className="space-y-2 text-[17px]">
                 <li>
                   <a
                     href="#Introduction"
@@ -312,11 +312,11 @@ export const Api = () => {
               <div className="bg-gray-700 rounded-lg p-4 mt-4">
                 <p className="text-white font-semibold mb-2">
                   Get key filtered data for races in which Lewis Hamilton
-                  finished in the top 3:
+                  finished first:
                 </p>
                 <code className="text-yellow-500">
                   GET /api/f1/key_data?driver_name=Lewis
-                  Hamilton&amp;race_finishing_position=1,2,3
+                  Hamilton&amp;race_finishing_position=1
                 </code>
               </div>
               <div className="bg-gray-700 rounded-lg p-4 mt-4">
@@ -352,7 +352,7 @@ export const Api = () => {
                   Python:
                 </p>
 
-                <pre className="bg-gray-900 rounded p-4 text-sm font-mono text-white container">
+                <pre className="bg-gray-900 rounded p-4 text-[12px] leading-[18px] font-mono text-white container">
                   <code className="w-full h-full max-w-full max-h-full">
                     {`import requests\n\n# Specify the API URL\nurl = 'https://formuladataapi.pythonanywhere.com/api/f1'\n\n# Define the query parameters\nparams = {\n    'season': 2022,\n    'weather': 'wet',\n    'driver_name':'Fernando Alonso'\n}\n\n# Send the GET request\nresponse = requests.get(url, params=params)\n\n# Check if the request was successful\nif response.status_code == 200:\n    # Print the response content (JSON data)\n    data = response.json()\n    print(len(data))\nelse:\n    # Print the error message\n    print(f'Request failed with status code {response.status_code}')`}
                   </code>
@@ -378,7 +378,7 @@ export const Api = () => {
                   Java:
                 </p>
 
-                <pre className="container bg-gray-900 rounded p-4 text-sm font-mono text-white">
+                <pre className="container bg-gray-900 rounded p-4 text-[12px] leading-[18px] font-mono text-white">
                   <code className="w-full h-full max-w-full max-h-full">
                     {`import java.io.IOException;
 import okhttp3.OkHttpClient;
@@ -442,7 +442,7 @@ public class Formula1DataAPIExample {
                   requests. Here's an example:
                 </p>
 
-                <pre className="container bg-gray-900 rounded p-4 text-sm font-mono text-white">
+                <pre className="container bg-gray-900 rounded p-4 text-[12px] leading-[18px] font-mono text-white">
                   <code className="w-full h-full max-w-full max-h-full">
                     {`import axios from 'axios';
 
@@ -484,7 +484,7 @@ const fetchData = async () => {
                   C++:
                 </p>
 
-                <pre className="w-full h-full container bg-gray-900 rounded p-4 text-sm font-mono text-white">
+                <pre className="w-full h-full container bg-gray-900 rounded p-4 text-[12px] leading-[18px] font-mono text-white">
                   <code className="w-full h-full max-w-full max-h-full">
                     {`#include <iostream>
 #include <curl/curl.h>
@@ -858,7 +858,7 @@ int main() {
               </div>
               <div className="my-6">
                 <h2 id="Sources" className="text-2xl font-semibold mb-5 mt-20">
-                  Data Source and Acknowledgements
+                  Data Sources and Acknowledgements
                 </h2>
                 <p className="mb-4">
                   The data extraction methodology involved web scraping

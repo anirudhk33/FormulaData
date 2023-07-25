@@ -31,15 +31,11 @@ export const navLinks = [
     route: "/Api",
     title: "API",
   },
+
   {
     id: "feedback",
     route: "/Feedback",
     title: "Feedback",
-  },
-  {
-    id: "bug",
-    route: "/BugReports",
-    title: "Bug Reports",
   },
 ];
 

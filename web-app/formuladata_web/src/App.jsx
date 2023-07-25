@@ -3,8 +3,7 @@ import { Hero } from "./components/Hero";
 import { FantasyBuilder } from "./components/FantasyBuilder";
 import { Navbar } from "./components/Navbar";
 import { Api } from "./components/Api";
-import { Feedback } from "./components/Feedback";
-import BugReports from "./components/BugReports";
+import Feedback from "./components/Feedback";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -25,7 +24,6 @@ const App = () => {
               <Route path="/FantasyBuilder" element={<FantasyBuilder />} />
               <Route path="/Feedback" element={<Feedback />} />
               <Route path="/Api" element={<Api />} />
-              <Route path="/BugReports" element={<BugReports />} />
             </Routes>
           </div>
         </div>

@@ -12,16 +12,16 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar">
+    <nav className="w-full flex py-5 justify-between items-center navbar">
       <img
         src={logo}
         alt="formuladata"
-        className="w-[50px] h-[50px] hover:cursor-pointer"
+        className="w-[40px] h-[40px] hover:cursor-pointer"
         onClick={() => navigate("/Home")}
       />
       <h3
         onClick={() => navigate("/Home")}
-        className="font-poppins font-medium gradient-text-redbull text-[32px] pl-3 hover:cursor-pointer"
+        className="font-poppins font-medium gradient-text-redbull text-[28px] pl-3 hover:cursor-pointer"
       >
         FormulaData
       </h3>
@@ -29,7 +29,7 @@ export const Navbar = () => {
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-[16px] $
+            className={`font-poppins font-normal cursor-pointer text-[14px] $
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"} text-white`}
           >
             <a
@@ -50,7 +50,9 @@ export const Navbar = () => {
           src={toggle ? close : menu}
           alt="menu"
           className="w-[28px] h-[28px] object-contain"
-          onClick={() => setToggle(!toggle)}
+          onClick={() => {
+            setToggle(!toggle);
+          }}
         />
 
         <div

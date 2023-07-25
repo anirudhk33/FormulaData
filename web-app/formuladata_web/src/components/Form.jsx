@@ -13,14 +13,14 @@ const Form = ({
   const handleIncrement = () => {
     const newBudget = parseFloat(budget);
     if (newBudget <= 150) {
-      setBudget((newBudget + 0.1).toFixed(1));
+      setBudget((newBudget + 0.5).toFixed(1));
     }
   };
 
   const handleDecrement = () => {
     const newBudget = parseFloat(budget);
     if (newBudget >= 50) {
-      setBudget((newBudget - 0.1).toFixed(1));
+      setBudget((newBudget - 0.5).toFixed(1));
     }
   };
 
@@ -89,8 +89,29 @@ const Form = ({
             className="block w-full bg-gray-800 text-white rounded-md py-2 px-3 mt-1 focus:outline-none focus:ring focus:border-yellow-500"
           >
             <option value="">Select the track</option>
-            <option value="Monaco">Monaco</option>
-            <option value="Silverstone">Silverstone</option>
+            <option value="bahrain">Bahrain</option>
+            <option value="saudi-arabia">Saudi Arabia</option>
+            <option value="australia">Australia</option>
+            <option value="azerbaijan">Azerbaijan</option>
+            <option value="miami">Miami</option>
+            <option value="monaco">Monaco</option>
+            <option value="spain">Spain</option>
+            <option value="canada">Canada</option>
+            <option value="austria">Austria</option>
+            <option value="great-britain">Great Britain</option>
+            <option value="hungary">Hungary</option>
+            <option value="belgium">Belgium</option>
+            <option value="netherlands">Netherlands</option>
+            <option value="italy">Italy</option>
+            <option value="singapore">Singapore</option>
+            <option value="japan">Japan</option>
+            <option value="qatar">Qatar</option>
+            <option value="united-states">United States</option>
+            <option value="mexico">Mexico</option>
+            <option value="brazil">Brazil</option>
+            <option value="las-vegas">Las Vegas</option>
+            <option value="abu-dhabi">Abu Dhabi</option>
+
             {/* Add more track options */}
           </select>
         </div>
@@ -192,7 +213,7 @@ const Form = ({
           >
             <option value="">Select optimization strategy</option>
             <option value="High Risk, High Reward">
-              High risk, high reward
+              High Risk, High Reward
             </option>
             <option value="Balanced">Balanced</option>
             <option value="Budget Increase">Budget Increase</option>
