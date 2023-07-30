@@ -72,13 +72,13 @@ export const FantasyBuilder = () => {
     let fp = checkbox ? "yes" : "no";
     axios
       .get(
-        `http://127.0.0.1:5000/api/f1/predictions?location=${track}&fp=${fp}`
+        `https://formuladataapi.onrender.com/api/f1/predictions?location=${track}&fp=${fp}`
       )
       .then((response) => {
         setData(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error(`Error fetching data for ${track}:`, error);
         setErrorMessage("Error Fetching Data");
         setGenerateRec(false);
       });
@@ -113,7 +113,7 @@ export const FantasyBuilder = () => {
             </h2>
             {/* Modal button */}
             <button
-              className="text-redbullYellow hover:underline focus:outline-none"
+              className="text-redbullYellow hover:underline font-bold focus:outline-none mr-3"
               onClick={() => setShowModal(true)}
             >
               New to F1 Fantasy?
@@ -130,7 +130,7 @@ export const FantasyBuilder = () => {
               }}
             >
               <div className="bg-black bg-opacity-50 fixed inset-0"></div>
-              <div className="relative bg-gray-800 p-8 max-w-md w-full rounded-lg shadow-lg z-10">
+              <div className="relative bg-gray-800 p-8 max-w-2xl w-full rounded-lg shadow-lg z-10">
                 {/* Close button (X) */}
                 <button
                   className="absolute top-4 right-6 text-redbullYellow text-[24px] font-normal font-lunas focus:outline-none"
@@ -142,20 +142,22 @@ export const FantasyBuilder = () => {
                   Welcome to F1 Fantasy!
                 </h3>
                 <p className="text-gray-300">
-                  {/* Your modal content */}
-                  {/* Use the anchor tag for the link */}
-                  In this game, you need to select a team of drivers and
-                  constructors while staying within your budget. Each driver and
-                  constructor is given points based on their real-life
-                  performance after every race weekend. The goal is to build a
-                  high-performing team within the budget constraints. Our
-                  algorithm intends to assist you in your efforts to select the
-                  ideal team! Click{" "}
+                  <span className="font-bold text-white">
+                    What is F1 Fantasy?
+                    <br />
+                  </span>
+                  F1 Fantasy is a free online game developed and hosted by
+                  Formula One. Each player needs to select a team of 5 drivers
+                  and 2 constructors while staying within their allocated
+                  budget. After every grand prix weekend, each driver and
+                  constructor is awarded points based on their real-life
+                  performance. The goal is to build a high-performing team
+                  within the budget constraints. Click{" "}
                   <a
                     href="https://fantasy.formula1.com/en/game-rules"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-bold text-white hover:underline hover:cursor-pointer"
+                    className="font-bold text-yellow-300 hover:underline hover:cursor-pointer"
                   >
                     here
                   </a>{" "}
@@ -164,12 +166,38 @@ export const FantasyBuilder = () => {
                 <br />
                 <p className="text-gray-300">
                   <span className="font-bold text-white">
-                    If you've never played before:{" "}
+                    What does our Fantasy Builder do?
+                    <br />
                   </span>
-                  Get started with a budget of $100 mill. Click "All of the
-                  above" when it comes to Chip Availability. Choose "Balanced"
-                  as your optimization strategy. Do not choose any Drivers or
-                  Constructors in your first game.
+                  Our Fantasy Builder assists F1 Fantasy players in selecting
+                  their optimal fantasy team week after week. Our model takes
+                  into account all relevant variables, including but not limited
+                  to budget constraints, weather predictions, penalties, and
+                  driver stock prices before providing a recommendation.
+                  Additionally, we have integrated Machine Learning models
+                  trained on 50+ years of data to predict every aspect of the
+                  race, further enhancing our recommendations.
+                </p>
+                <br />
+                <p className="text-gray-300">
+                  <span className="font-bold text-white">
+                    Never Played Before?
+                    <br />
+                  </span>
+                  Get started with a budget of $100 million. Select "All of the
+                  above" for Chip Availability. Choose the optimization strategy
+                  according to your preference. For your first game, do not
+                  select any Drivers or Constructors. Once you generate
+                  recommendations, please visit the{" "}
+                  <a
+                    href="https://fantasy.formula1.com/en/create-team"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold text-yellow-300 hover:underline hover:cursor-pointer"
+                  >
+                    F1 Fantasy site
+                  </a>{" "}
+                  to finalize your fantasy team.
                 </p>
               </div>
             </div>
@@ -239,7 +267,7 @@ export const FantasyBuilder = () => {
               </div>
               <div className="sm:w-2/5 ">
                 <h3 className="text-gray-200 font-poppins font-medium text-lg leading-7 mb-7">
-                  Please select your current fantasy team.
+                  Please select your current fantasy team below.
                 </h3>
                 {
                   <>

@@ -6,9 +6,25 @@ import fantasy2 from "../assets/fantasy2.jpeg";
 import react from "../assets/react.svg";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 export const Hero = () => {
   const navigate = useNavigate();
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `https://formuladataapi.onrender.com/api/f1/circuit_data`
+      );
+      console.log("Successful Activation");
+    } catch (error) {
+      console.error(`Error fetching initial data`, error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <section
       id="home"

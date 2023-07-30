@@ -3,12 +3,20 @@ import { FidgetSpinner } from "react-loader-spinner";
 
 const LoadingComponent = () => {
   const loadingMessages = [
-    "Please Wait...",
+    "This will take about 45 seconds...",
     "Querying Database...",
     "Scraping Latest Data...",
-    "Running Prediction Model...",
-    "Optimizing Fantasy Team...",
+    "Loading ML Model...",
+    "Running Prediction Algorithms...",
+    "Optimizing Recommendations...",
+    "Finalizing Fantasy Team...",
     "Almost there...",
+    "Thank you for your patience...",
+    "Thank you for your patience...",
+    "Thank you for your patience...",
+    "Thank you for your patience...",
+    "Thank you for your patience...",
+    "Thank you for your patience...",
   ];
 
   const [messageIndex, setMessageIndex] = useState(0);
@@ -17,7 +25,7 @@ const LoadingComponent = () => {
     // Update the loading message every 2 seconds
     const interval = setInterval(() => {
       setMessageIndex((prevIndex) => (prevIndex + 1) % loadingMessages.length);
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);

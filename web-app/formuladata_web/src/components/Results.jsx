@@ -239,12 +239,12 @@ const driverPrices = {
 };
 
 const constructorPrices = {
-  "Red Bull Racing": 28.4,
-  Mercedes: 25.3,
-  Ferrari: 22.9,
-  "Aston Martin": 9.0,
-  McLaren: 10.8,
-  Alpine: 10.4,
+  "Red Bull Racing": 28.6,
+  Mercedes: 25.4,
+  Ferrari: 23,
+  "Aston Martin": 9.5,
+  McLaren: 11.8,
+  Alpine: 10.3,
   "Alfa Romeo": 5.9,
   "Haas F1 Team": 4.9,
   AlphaTauri: 6.0,
@@ -836,6 +836,11 @@ export const Results = ({
     DriverPoints = raceDeductionsRisky(raceOrder, DriverPoints);
     DriverPoints = DOTDRisky(avgFinishingPos, raceOrder, DriverPoints);
     DriverPoints = sprintBoostDrivers(sprint, DriverPoints);
+    if (strategy === "High Risk, High Reward") {
+      for (let driver in DriverPoints) {
+        DriverPoints[driver] = parseInt(DriverPoints[driver] * 0.8);
+      }
+    }
 
     ConstructorPoints = driverToConstructor(DriverPoints, constructorDriverMap);
     ConstructorPoints = modifyConstructorPoints(
@@ -874,12 +879,29 @@ export const Results = ({
     optimalTeam[1] = temp;
   }
 
-  const Wildcard = useWildCard(optimalTeam[0]);
-  const extraDRSBoostDriver = extraDRSBoost(
-    optimalTeam[0],
-    DriverPoints,
-    sprint
-  );
+  const AllChips = [
+    "Limitless",
+    "Wildcard",
+    "Final Fix",
+    "Autopilot",
+    "No Negative",
+    "Extra DRS",
+  ];
+
+  const chipDict = {};
+
+  if (chips.includes("All of the above")) {
+    chips = AllChips.slice();
+  }
+
+  const Wildcard = chips.includes("Wildcard")
+    ? useWildCard(optimalTeam[0])
+    : "no driver";
+
+  const extraDRSBoostDriver = chips.includes("Extra DRS")
+    ? extraDRSBoost(optimalTeam[0], DriverPoints, sprint)
+    : "";
+
   let DRSBoostDriver;
   if (extraDRSBoostDriver === "") {
     DRSBoostDriver = DRSBoost(optimalTeam[0], DriverPoints, "None");
@@ -917,21 +939,6 @@ export const Results = ({
   //   "Max Verstappen",
   // ];
   // constructorChoices = ["Mercedes", "Mercedes"];
-
-  const AllChips = [
-    "Limitless",
-    "Wildcard",
-    "Final Fix",
-    "Autopilot",
-    "No Negative",
-    "Extra DRS",
-  ];
-
-  const chipDict = {};
-
-  if (chips.includes("All of the above")) {
-    chips = AllChips.slice();
-  }
 
   for (let i in AllChips) {
     if (chips.includes(AllChips[i])) {
