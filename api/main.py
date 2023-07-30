@@ -8,7 +8,7 @@ import requests
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True)
 
 # Backup season average Data
 avgFP1Pos = {
@@ -110,7 +110,7 @@ locationRounds = [
   "Saudi Arabia",
   "Australia",
   "Azerbaijan",
-  "United States",
+  "Miami",
   "Monaco",
   "Spain",
   "Canada",
@@ -125,7 +125,7 @@ locationRounds = [
   "United States",
   "Mexico",
   "Brazil",
-  "United States",
+  "Las Vegas",
   "Abu Dhabi"
 ]
 
@@ -404,17 +404,21 @@ def get_predictions():
 
     arguments = request.args
     for key, val in arguments.items():
-        if key not in ["location"]:
+        if key not in ["location", "fp"]:
             return jsonify({"Error": "Incorrect Request - Please Check Arguments"})
 
     value = request.args.get("location")
     if value is not None:
         location = value
-
     
-    FP1_results = scrape.FP_scrape_results(2023,2024,1, location)
-    FP2_results = scrape.FP_scrape_results(2023,2024,2, location)
-    FP3_results = scrape.FP_scrape_results(2023,2024,3, location)
+    value = request.args.get("fp")
+    if value is not None:
+        scrapePractice = value
+
+    if scrapePractice == "yes":
+        FP1_results = scrape.FP_scrape_results(2023,2024,1, location)
+        FP2_results = scrape.FP_scrape_results(2023,2024,2, location)
+        FP3_results = scrape.FP_scrape_results(2023,2024,3, location)
 
     try:
         FP1_results["Driver"] = FP1_results["Driver"].apply(scrape.parse_driver_name)
@@ -517,9 +521,9 @@ def get_predictions():
             "fl_probability": str(prob_fl)
         }
         driver_results[driver] = driver_dict
-    print(driver_results)
+    # print(driver_results)
     return jsonify(driver_results)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
