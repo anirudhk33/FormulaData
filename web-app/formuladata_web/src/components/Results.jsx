@@ -1018,7 +1018,7 @@ export const Results = ({
                 >
                   {/* Render image content here */}
                   <img
-                    src={`/public/DriverImages/${name}.avif`}
+                    src={`/DriverImages/${name}.avif`}
                     alt={`${name}`}
                     className="max-w-full max-h-full object-contain mb-1"
                   />
@@ -1047,7 +1047,7 @@ export const Results = ({
                 >
                   {/* Render image content here */}
                   <img
-                    src={`/public/ConstructorImages/${name}.avif`}
+                    src={`/ConstructorImages/${name}.avif`}
                     alt={`${name}`}
                     className="w-2/3 max-h-full object-contain mb-1"
                   />
