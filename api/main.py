@@ -1,3 +1,4 @@
+print("Imports have started")
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import pandas as pd
@@ -5,7 +6,7 @@ import scrape
 from tensorflow import keras
 import numpy as np
 import requests
-
+print("Imports complete")
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -151,13 +152,17 @@ def get_location_details(location, df):
 
 def get_race_results_with_fp(map, season, round, location, location_arr, weather, XX, model, fps):
     race_results = {}
-    weather_dict = {'dry':0, "cloudy":1, "wet":2}
+    weather_dict = {'dry': 0, "cloudy": 1, "wet": 2}
     latitude = location_arr[0]
     longitude = location_arr[1]
     circuit_length = location_arr[2]
 
+    datapoints = []
+    drivers = []
+    teams = []
+
     for driver, team in map.items():
-        datapoint = [0]*XX.shape[1]
+        datapoint = [0] * XX.shape[1]
         datapoint[0] = season
         datapoint[1] = round
         datapoint[2] = weather_dict[weather]
@@ -180,16 +185,24 @@ def get_race_results_with_fp(map, season, round, location, location_arr, weather
         loc = location.lower().replace(' ', '_')
         location_index = XX.columns.get_loc(f'location_{loc}')
         datapoint[location_index] = 1
-    
+
         driver_index = XX.columns.get_loc(f'driver_name_{driver}')
         team_index = XX.columns.get_loc(f'constructor_name_{team}')
         datapoint[driver_index] = 1
         datapoint[team_index] = 1
 
-        df = pd.DataFrame([datapoint], columns=XX.columns)
-        test_prediction = model.predict(df ,verbose=0)
-        race_results[driver] = test_prediction[0][0]
+        datapoints.append(datapoint)
+        drivers.append(driver)
+        teams.append(team)
+
+    df = pd.DataFrame(datapoints, columns=XX.columns)
+    test_predictions = model.predict(df, verbose=0)
+
+    for i in range(len(drivers)):
+        race_results[drivers[i]] = test_predictions[i][0]
+
     return race_results
+
 
 
 def get_fps(fpdf):
@@ -215,6 +228,7 @@ df_avgFP2Pos["season"] = 2023
 df_avgFP3Pos = pd.DataFrame(avgFP3Pos.items(), columns=["Driver", "fp3_pos"])
 df_avgFP3Pos["season"] = 2023
 
+print("Function Definitions Over")
 
 # Google Drive file ID
 file_id = '1dVKzWsdiImuWDDQ9CnRFSHK0Lcr_xK6P'
@@ -223,6 +237,8 @@ url = f'https://drive.google.com/uc?id={file_id}'
 
 # Read the CSV file directly from the URL into a DataFrame
 df = pd.read_csv(url)
+
+print("Downloaded URL")
 
 
 # df = pd.read_csv('/Users/anirudhkrishna/GitHub/FormulaData/csv-data/cleaned_race_data.csv')
@@ -416,9 +432,11 @@ def get_predictions():
         scrapePractice = value
 
     if scrapePractice == "yes":
+        print("Scraping Data")
         FP1_results = scrape.FP_scrape_results(2023,2024,1, location)
         FP2_results = scrape.FP_scrape_results(2023,2024,2, location)
         FP3_results = scrape.FP_scrape_results(2023,2024,3, location)
+        print("Scraped Data")
 
     try:
         FP1_results["Driver"] = FP1_results["Driver"].apply(scrape.parse_driver_name)
@@ -496,18 +514,19 @@ def get_predictions():
     X_fl = fl_data.drop('in_top_5', axis=1) 
 
 
+    print("Scraping Location Details")
     fps = get_fps(free_practice_results)
     location_arr = get_location_details(convert_location_string(location), circuit_details)
     round = locationRounds.index(convert_location_string(location))+1
-    print(fps)
-    print(location_arr)
-    print(round)
 
+    
+    print("Models have started running")
 
     results_fl = get_race_results_with_fp(driver_team_mapping, 2023, round, convert_location_string(location), location_arr, 'dry', X_fl, fl_model, fps)
     results_quali = get_race_results_with_fp(driver_team_mapping, 2023, round, convert_location_string(location), location_arr, 'dry', X_quali, quali_model, fps)
     results_race = get_race_results_with_fp(driver_team_mapping, 2023, round, convert_location_string(location), location_arr, 'dry', X_race, race_model, fps)
 
+    print("Models have run")
 
     driver_results = {}
 
@@ -521,7 +540,7 @@ def get_predictions():
             "fl_probability": str(prob_fl)
         }
         driver_results[driver] = driver_dict
-    # print(driver_results)
+    print("Returning Results")
     return jsonify(driver_results)
 
 
