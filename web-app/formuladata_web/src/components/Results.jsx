@@ -993,8 +993,8 @@ export const Results = ({
   };
 
   return (
-    <div className="flex items-center justify-center mt-[50px] ">
-      <div className="  flex flex-row items-center mb-20 px-14 bg-discount-gradient overflow-scroll rounded-[30px] w-4/5 pb-12">
+    <div className="flex items-center justify-center mt-[20px] ">
+      <div className="  flex flex-row items-center mb-10 px-14 bg-discount-gradient overflow-scroll rounded-[30px] w-4/5 pb-12">
         <div className="w-full h-full max-w-full max-h-full font-poppins font-normal text-white text-[16px] leading-[30px] ml-2">
           <div className="flex flex-col items-center justify-center mt-8 relative">
             <h2 className=" text-[25px] font-bold leading-[50px] mb-10 ">
@@ -1018,7 +1018,7 @@ export const Results = ({
                 >
                   {/* Render image content here */}
                   <img
-                    src={`/src/DriverImages/${name}.avif`}
+                    src={`/public/DriverImages/${name}.avif`}
                     alt={`${name}`}
                     className="max-w-full max-h-full object-contain mb-1"
                   />
@@ -1047,7 +1047,7 @@ export const Results = ({
                 >
                   {/* Render image content here */}
                   <img
-                    src={`/src/ConstructorImages/${name}.avif`}
+                    src={`/public/ConstructorImages/${name}.avif`}
                     alt={`${name}`}
                     className="w-2/3 max-h-full object-contain mb-1"
                   />

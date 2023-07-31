@@ -30,8 +30,8 @@ const LoadingComponent = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center mt-[110px]">
+    <div className="flex items-center justify-center ">
+      <div className="flex flex-col items-center justify-center mt-[100px] mb-[240px]">
         <FidgetSpinner
           visible={true}
           height="80"

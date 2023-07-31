@@ -45,8 +45,8 @@ const Form = ({
   };
 
   return (
-    <div className="bg-black pt-4 px-6 ">
-      <form onSubmit={handleSubmit} className="max-w-sm mx-auto relative z-10">
+    <div className="bg-black pt-4 pr-2 ">
+      <form onSubmit={handleSubmit} className=" mx-auto relative z-10">
         <div className="mb-6">
           <label htmlFor="budget" className="text-white text-lg font-semibold">
             Budget (in million USD):
@@ -65,7 +65,7 @@ const Form = ({
               name="budget"
               value={budget}
               onChange={(e) => setBudget(e.target.value)}
-              className="flex-grow bg-gray-800 text-white rounded-md py-2 px-3 ml-1 focus:outline-none focus:ring focus:border-yellow-500"
+              className="flex-grow bg-gray-800 text-white rounded-md py-2 px-3  focus:outline-none focus:ring focus:border-yellow-500"
             />
             <button
               type="button"

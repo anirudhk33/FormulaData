@@ -89,7 +89,7 @@ export const FantasyBuilder = () => {
   };
 
   return (
-    <section className={` pt-20 pb-10 justify-between`}>
+    <section className={` pt-20 pb-3 justify-between`}>
       {generateRec && !data ? (
         <LoadingComponent />
       ) : generateRec ? (
@@ -107,13 +107,13 @@ export const FantasyBuilder = () => {
         // ////////////////
         // ////////////////
         <div>
-          <div className="flex items-center justify-between mb-10 px-[40px] pb-[40px]">
-            <h2 className="text-gray-200 font-poppins font-semibold text-[36px] leading-9">
+          <div className="flex sm:flex-row flex-col items-center justify-between mb-10 px-[40px] sm:pb-[40px] pb-0] ">
+            <h2 className="text-gray-200 font-poppins font-semibold text-[28px] sm:text-[36px] leading-9 ">
               Fantasy Builder: Formula One 2023
             </h2>
             {/* Modal button */}
             <button
-              className="text-redbullYellow hover:underline font-bold focus:outline-none mr-3"
+              className="text-redbullYellow hover:underline font-bold focus:outline-none mr-3 self-center self-center pt-3 sm:pt-0"
               onClick={() => setShowModal(true)}
             >
               New to F1 Fantasy?
@@ -130,7 +130,7 @@ export const FantasyBuilder = () => {
               }}
             >
               <div className="bg-black bg-opacity-50 fixed inset-0"></div>
-              <div className="relative bg-gray-800 p-8 max-w-2xl w-full rounded-lg shadow-lg z-10">
+              <div className="relative bg-gray-800 p-8 sm:max-w-2xl w-full rounded-lg shadow-lg z-10 container ss:text-xs sm:text-[13px]">
                 {/* Close button (X) */}
                 <button
                   className="absolute top-4 right-6 text-redbullYellow text-[24px] font-normal font-lunas focus:outline-none"
@@ -208,27 +208,24 @@ export const FantasyBuilder = () => {
             Fantasy Builder: Formula One 2023
           </h2> */}
             <div className="flex sm:flex-row flex-col sm:justify-center sm:gap-40 gap-10 sm:items-stretch items-center">
-              <div className="w-5/12 ">
-                {
-                  <>
-                    <h3 className="text-gray-200 font-poppins font-medium text-lg leading-7 mb-0">
-                      Please answer the following questions so we can adapt our
-                      algorithm according to your requirements.
-                    </h3>
-                    <div className="mt-0">
-                      <Form
-                        budget={budget}
-                        track={track}
-                        chips={chips}
-                        strategy={strategy}
-                        setBudget={setBudget}
-                        setTrack={setTrack}
-                        setChips={setChips}
-                        setStrategy={setStrategy}
-                      />
-                    </div>
-                  </>
-                }
+              <div className="sm:w-5/12 w-4/5 flex-col self-start sm:self-center sm:ml-0 ml-10">
+                <h3 className="text-gray-200 font-poppins font-medium sm:text-lg text-md leading-7 mb-0 sm:ml-0 ">
+                  Please answer the following questions so we can adapt our
+                  algorithm according to your requirements.
+                </h3>
+                <div className="mt-0">
+                  <Form
+                    budget={budget}
+                    track={track}
+                    chips={chips}
+                    strategy={strategy}
+                    setBudget={setBudget}
+                    setTrack={setTrack}
+                    setChips={setChips}
+                    setStrategy={setStrategy}
+                  />
+                </div>
+
                 <div className="flex flex-row items-center py-[6px] px-3 bg-discount-gradient rounded-[10px] mb-3">
                   <p
                     className={`font-poppins font-normal text-gray-200 text-[16px] leading-[25px] ml-2`}

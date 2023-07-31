@@ -2,18 +2,20 @@ import React from "react";
 
 export const Api = () => {
   return (
-    <div className="flex items-center justify-center mt-[120px] mb-40">
-      <div className="flex flex-row items-center py-[6px] px-14 bg-grey overflow-scroll rounded-[30px] mb-3 w-4/5 pb-12">
-        <p className="w-full h-full max-w-full max-h-full font-poppins font-normal text-white text-[15px] leading-[30px] ml-2">
+    <div className="flex items-center justify-center sm:mt-[100px] mt-[60px] mb-10">
+      <div className="flex flex-row items-center py-[6px] sm:px-14 px-4 bg-grey overflow-scroll rounded-[30px] mb-3 w-4/5 pb-12">
+        <p className="w-full h-full max-w-full max-h-full font-poppins font-normal text-white sm:text-[15px] text-[12px] sm:leading-[30px] leading-[20px] ml-2">
           <div className="flex items-center justify-center mt-8 ">
-            <h2 className=" text-[32px] font-bold mt-10 leading-[50px]">
+            <h2 className=" sm:text-[32px] sm:leading-[50px] text-[24px] leading-[32px] font-bold sm:mt-10  ">
               FormulaData API Documentation
             </h2>
           </div>
-          <div className="container mx-auto px-4 mt-20">
+          <div className="container mx-auto px-4 sm:mt-20 mt-10">
             <div className="">
-              <h2 className="text-[24px] font-bold mb-6">Table of Contents</h2>
-              <ul className="space-y-2 text-[17px]">
+              <h2 className="sm:text-[24px] text-[18px] font-bold mb-6">
+                Table of Contents
+              </h2>
+              <ul className="space-y-2 sm:text-[17px] text-[14px]">
                 <li>
                   <a
                     href="#Introduction"
@@ -89,7 +91,10 @@ export const Api = () => {
               </ul>
             </div>
 
-            <h2 id="Introduction" className="text-2xl font-semibold mb-5 mt-20">
+            <h2
+              id="Introduction"
+              className="text-2xl font-semibold mb-5 sm:mt-20 mt-10"
+            >
               Introduction
             </h2>
             <p className="">
@@ -111,7 +116,10 @@ export const Api = () => {
               unlock new insights.
             </p>
 
-            <h2 id="Endpoints" className="text-2xl font-semibold mb-5 mt-20">
+            <h2
+              id="Endpoints"
+              className="text-2xl font-semibold mb-5 sm:mt-20 mt-10"
+            >
               Endpoints
             </h2>
             <p className="mb-6">
@@ -299,7 +307,7 @@ export const Api = () => {
             <div className="mb-8">
               <h2
                 id="RequestExamples"
-                className="text-2xl font-semibold mb-6 mt-20"
+                className="text-2xl font-semibold mb-6 sm:mt-20 mt-10"
               >
                 Request Examples
               </h2>
@@ -344,7 +352,10 @@ export const Api = () => {
                 </code>
               </div>
               <div className="my-6">
-                <h2 id="Python" className="text-2xl font-semibold mb-5 mt-20">
+                <h2
+                  id="Python"
+                  className="text-2xl font-semibold mb-5 sm:mt-20 mt-10"
+                >
                   Accessing API from Python
                 </h2>
                 <p className="mb-4">
@@ -352,7 +363,7 @@ export const Api = () => {
                   Python:
                 </p>
 
-                <pre className="bg-gray-900 rounded p-4 text-[12px] leading-[18px] font-mono text-white container">
+                <pre className="bg-gray-900 rounded p-4 sm:text-[12px] sm:leading-[18px] text-[9px] leading-[14px] font-mono text-white container">
                   <code className="w-full h-full max-w-full max-h-full">
                     {`import requests\n\n# Specify the API URL\nurl = 'https://formuladataapi.pythonanywhere.com/api/f1'\n\n# Define the query parameters\nparams = {\n    'season': 2022,\n    'weather': 'wet',\n    'driver_name':'Fernando Alonso'\n}\n\n# Send the GET request\nresponse = requests.get(url, params=params)\n\n# Check if the request was successful\nif response.status_code == 200:\n    # Print the response content (JSON data)\n    data = response.json()\n    print(len(data))\nelse:\n    # Print the error message\n    print(f'Request failed with status code {response.status_code}')`}
                   </code>
@@ -370,7 +381,10 @@ export const Api = () => {
                 </p>
               </div>
               <div className="my-6">
-                <h2 id="Java" className="text-2xl font-semibold mb-5 mt-20">
+                <h2
+                  id="Java"
+                  className="text-2xl font-semibold mb-5 sm:mt-20 mt-10"
+                >
                   Accessing API from Java
                 </h2>
                 <p className="mb-4">
@@ -378,7 +392,7 @@ export const Api = () => {
                   Java:
                 </p>
 
-                <pre className="container bg-gray-900 rounded p-4 text-[12px] leading-[18px] font-mono text-white">
+                <pre className="container bg-gray-900 rounded p-4 sm:text-[12px] sm:leading-[18px] text-[9px] leading-[14px] font-mono text-white">
                   <code className="w-full h-full max-w-full max-h-full">
                     {`import java.io.IOException;
 import okhttp3.OkHttpClient;
@@ -433,7 +447,10 @@ public class Formula1DataAPIExample {
               </div>
 
               <div className="my-6">
-                <h2 id="React" className="text-2xl font-semibold mb-5 mt-20">
+                <h2
+                  id="React"
+                  className="text-2xl font-semibold mb-5 sm:mt-20 mt-10"
+                >
                   Accessing API from React
                 </h2>
                 <p className="mb-4">
@@ -442,7 +459,7 @@ public class Formula1DataAPIExample {
                   requests. Here's an example:
                 </p>
 
-                <pre className="container bg-gray-900 rounded p-4 text-[12px] leading-[18px] font-mono text-white">
+                <pre className="container bg-gray-900 rounded p-4 sm:text-[12px] sm:leading-[18px] text-[9px] leading-[14px] font-mono text-white">
                   <code className="w-full h-full max-w-full max-h-full">
                     {`import axios from 'axios';
 
@@ -476,7 +493,10 @@ const fetchData = async () => {
                 </p>
               </div>
               <div className="my-6">
-                <h2 id="C++" className="text-2xl font-semibold mb-5 mt-20">
+                <h2
+                  id="C++"
+                  className="text-2xl font-semibold mb-5 sm:mt-20 mt-10"
+                >
                   Accessing API from C++
                 </h2>
                 <p className="mb-4">
@@ -484,7 +504,7 @@ const fetchData = async () => {
                   C++:
                 </p>
 
-                <pre className="w-full h-full container bg-gray-900 rounded p-4 text-[12px] leading-[18px] font-mono text-white">
+                <pre className="w-full h-full container bg-gray-900 rounded p-4 sm:text-[12px] sm:leading-[18px] text-[9px] leading-[14px] font-mono text-white">
                   <code className="w-full h-full max-w-full max-h-full">
                     {`#include <iostream>
 #include <curl/curl.h>
@@ -549,7 +569,7 @@ int main() {
               <div className="my-6">
                 <h2
                   id="DataDescription"
-                  className="text-2xl font-semibold mb-5 mt-20"
+                  className="text-2xl font-semibold mb-5 sm:mt-20 mt-10"
                 >
                   Data Description
                 </h2>
@@ -857,7 +877,10 @@ int main() {
                 </table>
               </div>
               <div className="my-6">
-                <h2 id="Sources" className="text-2xl font-semibold mb-5 mt-20">
+                <h2
+                  id="Sources"
+                  className="text-2xl font-semibold mb-5 sm:mt-20 mt-10"
+                >
                   Data Sources and Acknowledgements
                 </h2>
                 <p className="mb-4">
