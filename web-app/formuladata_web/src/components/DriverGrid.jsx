@@ -47,7 +47,7 @@ export const DriverGrid = ({ update, selected, style }) => {
             >
               {/* Render image content here */}
               <img
-                src={`/src/DriverImages/${name}.avif`}
+                src={`/DriverImages/${name}.avif`}
                 alt={`${name}`}
                 className="max-w-full max-h-full object-contain mb-1 hover:cursor-pointer"
               />

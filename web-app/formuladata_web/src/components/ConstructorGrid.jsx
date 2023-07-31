@@ -37,7 +37,7 @@ export const ConstructorGrid = ({ update, selected, style }) => {
             >
               {/* Render image content here */}
               <img
-                src={`/src/ConstructorImages/${name}.avif`}
+                src={`/ConstructorImages/${name}.avif`}
                 alt={`${name}`}
                 className="max-w-full max-h-full object-contain mb-1 hover:cursor-pointer"
               />
