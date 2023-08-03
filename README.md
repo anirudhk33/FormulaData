@@ -23,9 +23,9 @@ FormulaData originated from my avid participation in Formula 1 fantasy leagues. 
 * From given metrics, Javascript algorithms optimize fantasy team recommendations adhering to appropriate rules
 <br/>
 <p>
-  <img src="https://github.com/anirudhk33/FormulaData/assets/114661218/ef38db1b-51a9-4298-b89c-d1aae1e67727" height="400"  />
+  <img src="https://github.com/anirudhk33/FormulaData/assets/114661218/ef38db1b-51a9-4298-b89c-d1aae1e67727" height="430"  />
   &nbsp;
-  <img src="https://github.com/anirudhk33/FormulaData/assets/114661218/303a450f-e591-458c-882d-06840fb7cbdf" height="400"  />
+  <img src="https://github.com/anirudhk33/FormulaData/assets/114661218/303a450f-e591-458c-882d-06840fb7cbdf" height="430"  />
 </p>
 
 ### API Design:
