@@ -46,7 +46,7 @@ const Form = ({
 
   return (
     <div className="bg-black pt-4 pr-2 ">
-      <form onSubmit={handleSubmit} className=" mx-auto relative z-10">
+      <form onSubmit={handleSubmit} className=" mx-auto relative z-5">
         <div className="mb-6">
           <label htmlFor="budget" className="text-white text-lg font-semibold">
             Budget (in million USD):

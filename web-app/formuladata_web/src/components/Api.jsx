@@ -1,6 +1,21 @@
 import React from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
 export const Api = () => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `https://formuladataapi.onrender.com/api/f1/circuit_data`
+      );
+      console.log("Successful Activation");
+    } catch (error) {
+      console.error(`Error fetching initial data`, error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className="flex items-center justify-center sm:mt-[100px] mt-[60px] mb-10">
       <div className="flex flex-row items-center py-[6px] sm:px-14 px-4 bg-grey overflow-scroll rounded-[30px] mb-3 w-4/5 pb-12">
@@ -98,9 +113,9 @@ export const Api = () => {
               Introduction
             </h2>
             <p className="">
-              The FormulaData REST API is a comprehensive solution for querying
-              and filtering Formula 1 data spanning from 1950 to the present.
-              With its intuitive interface and powerful capabilities, the API
+              The FormulaData API is a comprehensive solution for querying and
+              filtering Formula 1 data spanning from 1950 to the present. With
+              its intuitive interface and powerful capabilities, the API
               empowers users to access a wide range of data related to seasons,
               rounds, locations, weather conditions, race results, drivers,
               constructors, circuits, and more. By utilizing the API's diverse
@@ -125,7 +140,7 @@ export const Api = () => {
             <p className="mb-6">
               The base URL for accessing the API is:{" "}
               <code className="text-blue-200">
-                https://formuladataapi.pythonanywhere.com/api/f1
+                https://formuladataapi.pythonanywhere.com
               </code>
               .
             </p>
@@ -365,7 +380,7 @@ export const Api = () => {
 
                 <pre className="bg-gray-900 rounded p-4 sm:text-[12px] sm:leading-[18px] text-[9px] leading-[14px] font-mono text-white container">
                   <code className="w-full h-full max-w-full max-h-full">
-                    {`import requests\n\n# Specify the API URL\nurl = 'https://formuladataapi.pythonanywhere.com/api/f1'\n\n# Define the query parameters\nparams = {\n    'season': 2022,\n    'weather': 'wet',\n    'driver_name':'Fernando Alonso'\n}\n\n# Send the GET request\nresponse = requests.get(url, params=params)\n\n# Check if the request was successful\nif response.status_code == 200:\n    # Print the response content (JSON data)\n    data = response.json()\n    print(len(data))\nelse:\n    # Print the error message\n    print(f'Request failed with status code {response.status_code}')`}
+                    {`import requests\n\n# Specify the API URL\nurl = 'https://formuladataapi.pythonanywhere.com/api/f1'\n\n# Define the query parameters\nparams = {\n    'season': 2022,\n    'weather': 'wet',\n    'driver_name':'Fernando Alonso'\n}\n\n# Send the GET request\nresponse = requests.get(url, params=params)\n\n# Check if the request was successful\nif response.status_code == 200:\n    # Print the response content (JSON data)\n    data = response\n    print(data)\nelse:\n    # Print the error message\n    print(f'Request failed with status code {response.status_code}')`}
                   </code>
                 </pre>
 

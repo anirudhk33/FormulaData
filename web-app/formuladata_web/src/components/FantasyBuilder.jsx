@@ -10,6 +10,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LoadingComponent from "./Loading";
 import { Results } from "./Results";
+import SliderModal from "./SliderModal";
 
 export const FantasyBuilder = () => {
   const navigate = useNavigate();
@@ -24,6 +25,13 @@ export const FantasyBuilder = () => {
   const [data, setData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [showModal, setShowModal] = useState(false); // Modal visibility state
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const images = [
+    "../assets/fantasy.avif",
+    "../assets/fantasy.avif",
+    "../assets/fantasy.avif",
+    // Add more image URLs as needed
+  ];
 
   const recommend = () => {
     if (isNaN(parseFloat(budget))) {
@@ -111,6 +119,22 @@ export const FantasyBuilder = () => {
             <h2 className="text-gray-200 font-poppins font-semibold text-[28px] sm:text-[36px] leading-9 ">
               Fantasy Builder: Formula One 2023
             </h2>
+            {/* ///////// FIND ME /////// */}
+            {/* <div>
+              <h1>Modal Slider Page</h1>
+              <button
+                className="text-white"
+                onClick={() => setModalIsOpen(true)}
+              >
+                Open Modal
+              </button>
+              <SliderModal
+                images={images}
+                isOpen={modalIsOpen}
+                onRequestClose={() => setModalIsOpen(false)}
+              />
+            </div> */}
+            {/* //////// FIND ME */}
             {/* Modal button */}
             <button
               className="text-redbullYellow hover:underline font-bold focus:outline-none mr-3 self-center self-center pt-3 sm:pt-0"

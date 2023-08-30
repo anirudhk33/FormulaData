@@ -489,24 +489,47 @@ const pitStopBonus = (fastPitFreq, ConstructorPoints) => {
 ///////////////OPTIMIZATION////////////////////////
 ///////////////////////////////////////////////////
 
+// const generateCombinations = (elements, k) => {
+//   const combinations = [];
+//   const currentComb = [];
+
+//   const backtrack = (start) => {
+//     if (currentComb.length === k) {
+//       combinations.push([...currentComb]);
+//       return;
+//     }
+
+//     for (let i = start; i < elements.length; i++) {
+//       currentComb.push(elements[i]);
+//       backtrack(i + 1);
+//       currentComb.pop();
+//     }
+//   };
+
+//   backtrack(0);
+
+//   return combinations;
+// };
+
 const generateCombinations = (elements, k) => {
   const combinations = [];
-  const currentComb = [];
+  const stack = [];
+  const elementsLength = elements.length;
 
-  const backtrack = (start) => {
+  stack.push({ start: 0, currentComb: [] });
+
+  while (stack.length > 0) {
+    const { start, currentComb } = stack.pop();
+
     if (currentComb.length === k) {
       combinations.push([...currentComb]);
-      return;
+    } else {
+      for (let i = start; i < elementsLength; i++) {
+        const newComb = [...currentComb, elements[i]];
+        stack.push({ start: i + 1, currentComb: newComb });
+      }
     }
-
-    for (let i = start; i < elements.length; i++) {
-      currentComb.push(elements[i]);
-      backtrack(i + 1);
-      currentComb.pop();
-    }
-  };
-
-  backtrack(0);
+  }
 
   return combinations;
 };
